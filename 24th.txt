@@ -1,0 +1,119 @@
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 40
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bank               |
+| clause             |
+| data               |
+| data1              |
+| dbms               |
+| employee           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| student            |
+| sys                |
+| workers            |
+| workers1           |
++--------------------+
+13 rows in set (0.02 sec)
+
+mysql> create database workers2;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use workers2;
+Database changed
+mysql> create table workers;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> use workers;
+Database changed
+mysql> select * from workers;
++------+-----------+--------------+-------------+
+| s_no | name      | desigination | branch      |
++------+-----------+--------------+-------------+
+|    1 | kalai     | manager      | tuticorin   |
+|    2 | dharshini | CEO          | neyveli     |
+|    3 | rajath    | TL           | kolkata     |
+|    4 | swathi    | ass.manager  | chennai     |
+|    5 | jasmine   | supervisor   | kanyakumari |
+|    6 | barath    | pune         | salem       |
+|    7 | sanjay    | director     | bengalur    |
+|    8 | selva     | ass.director | delhi       |
+|    9 | naresh    | ass.TL       | mumbai      |
+|   10 | daniel    | developer    | chennai     |
+|   11 | mohan     | tester       | chennai     |
+|   12 | naveen    | ass.CEO      | chennai     |
+|   13 | karthi    | marketing    | chennai     |
++------+-----------+--------------+-------------+
+13 rows in set (0.00 sec)
+
+mysql> alter table workers add salary int(20);
+Query OK, 0 rows affected, 1 warning (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> select * from workers;
++------+-----------+--------------+-------------+--------+
+| s_no | name      | desigination | branch      | salary |
++------+-----------+--------------+-------------+--------+
+|    1 | kalai     | manager      | tuticorin   |   NULL |
+|    2 | dharshini | CEO          | neyveli     |   NULL |
+|    3 | rajath    | TL           | kolkata     |   NULL |
+|    4 | swathi    | ass.manager  | chennai     |   NULL |
+|    5 | jasmine   | supervisor   | kanyakumari |   NULL |
+|    6 | barath    | pune         | salem       |   NULL |
+|    7 | sanjay    | director     | bengalur    |   NULL |
+|    8 | selva     | ass.director | delhi       |   NULL |
+|    9 | naresh    | ass.TL       | mumbai      |   NULL |
+|   10 | daniel    | developer    | chennai     |   NULL |
+|   11 | mohan     | tester       | chennai     |   NULL |
+|   12 | naveen    | ass.CEO      | chennai     |   NULL |
+|   13 | karthi    | marketing    | chennai     |   NULL |
++------+-----------+--------------+-------------+--------+
+13 rows in set (0.00 sec)
+
+mysql> alter table workers rename column name to w_name;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from workers;
++------+-----------+--------------+-------------+--------+
+| s_no | w_name    | desigination | branch      | salary |
++------+-----------+--------------+-------------+--------+
+|    1 | kalai     | manager      | tuticorin   |   NULL |
+|    2 | dharshini | CEO          | neyveli     |   NULL |
+|    3 | rajath    | TL           | kolkata     |   NULL |
+|    4 | swathi    | ass.manager  | chennai     |   NULL |
+|    5 | jasmine   | supervisor   | kanyakumari |   NULL |
+|    6 | barath    | pune         | salem       |   NULL |
+|    7 | sanjay    | director     | bengalur    |   NULL |
+|    8 | selva     | ass.director | delhi       |   NULL |
+|    9 | naresh    | ass.TL       | mumbai      |   NULL |
+|   10 | daniel    | developer    | chennai     |   NULL |
+|   11 | mohan     | tester       | chennai     |   NULL |
+|   12 | naveen    | ass.CEO      | chennai     |   NULL |
+|   13 | karthi    | marketing    | chennai     |   NULL |
++------+-----------+--------------+-------------+--------+
+13 rows in set (0.00 sec)
+
+mysql> alter table worker rename to trainee;
+ERROR 1146 (42S02): Table 'workers.worker' doesn't exist
+mysql> alter table workers rename to trainee;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> drop table trainee;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql>
